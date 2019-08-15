@@ -1,0 +1,24 @@
+{
+  "name": "ttp-fs",
+  "version": "1.0.0",
+  "description": "Code Challenge - Bearabull Trading",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bazb0t/TTP-FS.git"
+  },
+  "author": "mia andor baz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bazb0t/TTP-FS/issues"
+  },
+  "homepage": "https://github.com/bazb0t/TTP-FS#readme"
+}
