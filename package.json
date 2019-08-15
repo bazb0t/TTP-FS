@@ -19,7 +19,9 @@
     "webpack-cli": "^3.3.6"
   },
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node server",
+    "start-dev": "webpack -w & nodemon server/index.js"
   },
   "repository": {
     "type": "git",
