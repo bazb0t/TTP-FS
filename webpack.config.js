@@ -1,10 +1,8 @@
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
-  entry: [
-        './client/index.js'
-  ],
+  entry: ['./client/index.js'],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
@@ -22,7 +20,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
-}
+};
