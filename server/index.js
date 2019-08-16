@@ -8,7 +8,7 @@ const app = express();
 app.use(morgan('dev'));
 
 // Static Assets
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Parsing
 const bodyParser = require('body-parser');
@@ -20,7 +20,7 @@ app.use('/api', require('./apis'));
 
 // Send index.html
 app.get('*', function (req, res, next) {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
 // 500 Error Handling
