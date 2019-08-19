@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {withRouter, Route, Switch} from 'react-router-dom';
+import React from 'react';
+// import {connect} from 'react-redux';
+import {
+    // withRouter, Route, 
+    Switch} from 'react-router-dom';
 // import { Register, SignIN } from './components';
 
 export default function Routes () {
