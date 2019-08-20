@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import '../public/index.css';
-import Routes from './Routes';
-import Navbar from './Navbar';
+import App from './App'; // app wrapper
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-      <h1>Welcome to Bearabull Trading</h1>
-      <h2>painless portfolio management</h2>
-    </div>
-    <Navbar />
-    <Routes />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
