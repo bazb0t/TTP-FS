@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize');
 const db = require('./db');
 const User = require('./UserModel');
-// additional models here
+const Transaction = require('./TransactionModel');
 
-// associations below
+// Associations
+User.hasMany(Transaction);
+Transaction.belongsTo(User);
 
 module.exports = db;
