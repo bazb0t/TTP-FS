@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+// import { connect } from 'react-redux';
+import { auth } from '../redux/store';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 const asyncRegister = async (n, e, pw) => {
   try {
-    await axios.post(`/api/users`, {name: n, email: e, password: pw});
-  } catch (error) {
+    await axios.post(`/auth/signup`, {name: n, email: e, password: pw});
+  } catch (err) {
     console.error(`Registration unsuccessful. Please try again.`)
     .then(() => {
       return (
@@ -24,7 +26,7 @@ const Register = () => {
   return (
     <div className="Register">
         <h2>Register</h2>
-      <form onSubmit={() => asyncRegister(name, email, password)}>
+      <form onSubmit={() => auth(name, email, password)}>
         <input
           type="text"
           name="name"
