@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/Portfolio" className="navbar__link">Portfolio</Link>

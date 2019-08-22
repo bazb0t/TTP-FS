@@ -1,32 +1,49 @@
-import React from 'react';
-// import {connect} from 'react-redux';
-import { /*withRouter,*/ Route, Switch } from 'react-router-dom';
-import Register from './components/Register';
-// /* import SignIN from './components/SignIN' */
-import Portfolio from './components/Portfolio';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {withRouter, Route, Switch} from 'react-router-dom'
+import {Login, Signup, Portfolio} from './components'
+import {me} from './redux/store'
 
-const Routes = () => {
-  return (
-    <div>
+// Component
+class Routes extends Component {
+  componentDidMount() {
+    this.props.loadInitialData()
+  }
+
+  render() {
+    const {isLoggedIn} = this.props
+
+    return (
       <Switch>
-        <Route exact path="/Register" component={Register} />
-     {/* <Route exact path="/Sign-IN" component={SignIN} />
-    //     <Route component={SignIN} />
-    //     {isLoggedIn && (
-    //       <Switch>
-    //         // Routes placed here are only available after logging in        */}
-
-        <Route exact path="/Portfolio" component={Portfolio} />
-        {/* <Route exact path="/Transactions" component={Transactions} />
-    //         <Route component={Portfolio}
-    //       </Switch>
-    //     )}
-    //     <Route component={SignIN} />
-    //     */}
-        <Route component={Register} />
+        {/* Pre Login */}
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        {isLoggedIn && (
+          <Switch>
+            {/* Post Login */}
+            <Route path="/home" component={Portfolio} />
+          </Switch>
+        )}
+        {/* Displays our Login component as a fallback */}
+        <Route component={Signup} />
       </Switch>
-    </div>
-  );
-};
+    )
+  }
+}
 
-export default Routes;
+// Container
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.user.id
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    loadInitialData() {
+      dispatch(me())
+    }
+  }
+}
+
+export default withRouter(connect(mapState, mapDispatch)(Routes))

@@ -1,65 +1,45 @@
-const router = require('express').Router();
-const User = require('../../db/User');
+const router = require('express').Router()
+const Users = require('../../db/Users')
+module.exports = router
 
-router.put('/login', async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
-    const user = await User.findOne({
-      where: {
-        email: req.body.email
-      }
-    });
+    const user = await Users.findOne({where: {email: req.body.email}})
     if (!user) {
-      console.log(
-        'No investors found with those credentials. Please try again, or sign up.'
-      );
-      res
-        .status(401)
-        .send(
-          'No investors found with those credentials. Please try again, or sign up.'
-        );
+      console.log('No such user found:', req.body.email)
+      res.status(401).send('Wrong username and/or password')
+    } else if (!user.correctPassword(req.body.password)) {
+      console.log('Incorrect password for user:', req.body.email)
+      res.status(401).send('Wrong username and/or password')
     } else {
-      req.login(user, err => {
-        if (err) next(err);
-        else res.json(user);
-      });
+      req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {
-    next(err);
+    next(err)
   }
-});
+})
 
 router.post('/signup', async (req, res, next) => {
+  console.log('HELLO HELLO I HIT A POST ROUTE', req.body)
   try {
-    if (req.body.password === '') {
-      res.status(401).send('Please enter your password.');
-    } else {
-      const user = await User.create(req.body);
-      req.login(user, err => {
-        if (err) next(err);
-        else res.json(user).redirect('/Portfolio');
-      });
-    }
+    const user = await Users.create(req.body)
+    console.log('user:', user)
+    req.login(user, err => (err ? next(err) : res.json(user)))
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
-      console.log('Investor already registered! Please sign in.');
-      res
-        .status(401)
-        .send('Investor already registered! Please sign in.')
-        .redirect('/SignIN');
+      res.status(401).send('User already exists')
     } else {
-      next(err);
+      next(err)
     }
   }
+})
 
-  router.delete('/logout', (req, res, next) => {
-    req.logout();
-    req.session.destroy();
-    res.sendStatus(204).redirect('/SignIN');
-  });
+router.post('/logout', (req, res) => {
+  req.logout()
+  req.session.destroy()
+  res.redirect('/')
+})
 
-  router.get('/me', (req, res, next) => {
-    res.json(req.user);
-  });
-});
-
-module.exports = router;
+router.get('/me', (req, res) => {
+  res.json(req.user)
+})

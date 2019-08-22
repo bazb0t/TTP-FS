@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const db = require('./db');
 
-const Transaction = db.define('Transaction', {
+const Transactions = db.define('Transactions', {
     tickerSymbol: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -22,4 +22,4 @@ const Transaction = db.define('Transaction', {
     },
 });
 
-module.exports = Transaction;
+module.exports = Transactions;
