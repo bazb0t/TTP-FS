@@ -19,7 +19,7 @@ const Transactions = db.define('Transactions', {
     qty: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        validate: {min: 1},
+        validate: {min: 1}
     },
 });
 
