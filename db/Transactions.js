@@ -8,7 +8,7 @@ const Transactions = db.define('Transactions', {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    type: {
+    method: {
         type: Sequelize.STRING,
         allowNull: false,
     },
@@ -19,6 +19,7 @@ const Transactions = db.define('Transactions', {
     qty: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        validate: {min: 1},
     },
 });
 

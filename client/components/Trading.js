@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { auth } from '../redux/store';
+const cash = 1111; // dummy var; will be user's cash later
 
 // Component
 const Trading = props => {
@@ -10,6 +11,7 @@ const Trading = props => {
 
   return (
     <div>
+        <h4>Cash: ${cash}</h4>
           <form onSubmit={handleSubmit} name={name}>
             <div>
               <label htmlFor='tickerSymbol'>

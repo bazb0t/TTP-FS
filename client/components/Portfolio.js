@@ -1,7 +1,7 @@
 import React from 'react';
 // import Assets from "./Assets"
 import Trading from './Trading';
-const totalValue = 5000; // dummy var; will be user's combined assets+cash later
+const totalValue = 592394.29; // dummy var; will be user's combined assets+cash later
 
 const Portfolio = () => {
   return (
