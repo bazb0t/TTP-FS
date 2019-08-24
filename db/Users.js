@@ -23,6 +23,10 @@ const Users = db.define('Users', {
     get() {
       return () => this.getDataValue('salt')
     }
+  },
+  cash: {
+    type: Sequelize.DECIMAL(Infinity, 2),
+    defaultValue: 9000.00,
   }
 })
 
