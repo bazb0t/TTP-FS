@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
-// router.use('/users', require('./users'));
+router.use('/users', require('./users'));
+
 
 // 404 Handling
 router.use(function (req, res, next) {

@@ -1,10 +1,10 @@
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 const db = require('./db');
-const User = require('./UserModel');
-const Transaction = require('./TransactionModel');
+const Users = require('./Users');
+const Transactions = require('./Transactions');
 
 // Associations
-User.hasMany(Transaction);
-Transaction.belongsTo(User);
+Users.hasMany(Transactions);
+Transactions.belongsTo(Users);
 
 module.exports = db;

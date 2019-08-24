@@ -1,27 +1,51 @@
-import React from 'react';
-// import {connect} from 'react-redux';
-import {
-    // withRouter, Route, 
-    Switch} from 'react-router-dom';
-// import { Register, SignIN } from './components';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {withRouter, Route, Switch} from 'react-router-dom'
+import {Login, Signup, Portfolio, Transactions} from './components'
+import {me} from './redux/store'
 
-export default function Routes () {
+// Component
+class Routes extends Component {
+  componentDidMount() {
+    this.props.loadInitialData()
+  }
+
+  render() {
+    const {isLoggedIn} = this.props
+
     return (
-    <Switch>
-        {/* <Route exact path="/Register" component={Register} />
-        <Route exact path="/Sign-IN" component={SignIN} />
-        <Route component={SignIN} />
+      <Switch>
+        {/* Pre Login */}
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
         {isLoggedIn && (
           <Switch>
-            // Routes placed here are only available after logging in
-            <Route exact path="/Portfolio" component={Portfolio} />
-            <Route exact path="/Transactions" component={Transactions} />
-            <Route component={Portfolio}
+            {/* Post Login */}
+            <Route exact path="/transactions" component={Transactions} />
+            <Route exact path="/portfolio" component={Portfolio} />
+            <Route path="/" component={Portfolio} />
           </Switch>
         )}
-        <Route component={SignIN} />
-        */}
-        {/* <Route component={Register} */}
-    </Switch>
+        {/* Fallback */}
+        <Route component={Login} />
+      </Switch>
     )
+  }
 }
+
+// Container
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.user.id
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    loadInitialData() {
+      dispatch(me())
+    }
+  }
+}
+
+export default withRouter(connect(mapState, mapDispatch)(Routes))
