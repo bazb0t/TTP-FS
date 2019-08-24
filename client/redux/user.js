@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 // Action Types
 const GET_USER = 'GET_USER';
@@ -21,14 +22,15 @@ export const me = () => async dispatch => {
   }
 };
 
-export const auth = (name, email, password, method) => async dispatch => {
-  console.log('in user reducer! method is:', method);
+export const auth = (email, password, method, name) => async dispatch => {
   let res = {};
   try {
-    if (method === 'signup') {
-      res = await axios.post(`/auth/signup`, { name, email, password });
-    } else if (method === 'login') {
-      res = await axios.post(`/auth/login`, { email, password });
+      res = await axios.post(`/auth/${method}`, { name, email, password });
+    try {
+      dispatch(getUser(res.data));
+      history.push('/');
+    } catch (dispatchOrHistoryErr) {
+      console.error(dispatchOrHistoryErr);
     }
   } catch (authError) {
     return dispatch(getUser({ error: authError }));
@@ -39,6 +41,7 @@ export const logout = () => async dispatch => {
   try {
     await axios.post(`/auth/logout`);
     dispatch(removeUser());
+    history.push('/')
   } catch (err) {
     console.error(err);
   }

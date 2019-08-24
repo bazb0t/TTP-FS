@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {Login, Signup, Portfolio} from './components'
+import {Login, Signup, Portfolio, Transactions} from './components'
 import {me} from './redux/store'
 
 // Component
@@ -21,11 +21,13 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Post Login */}
-            <Route path="/home" component={Portfolio} />
+            <Route exact path="/transactions" component={Transactions} />
+            <Route exact path="/portfolio" component={Portfolio} />
+            <Route path="/" component={Portfolio} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
-        <Route component={Signup} />
+        {/* Fallback */}
+        <Route component={Login} />
       </Switch>
     )
   }

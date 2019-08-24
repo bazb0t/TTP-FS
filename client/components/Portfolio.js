@@ -8,6 +8,7 @@ const Portfolio = () => {
         <div className="Portfolio">
             <h2>Portfolio (${totalValue})</h2>
             <div className="Portfolio__inner">
+                ooga
                 {/* <Assets />
                 <Trading /> */}
             </div>
