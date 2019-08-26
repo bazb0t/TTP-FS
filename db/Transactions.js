@@ -21,6 +21,7 @@ const Transactions = db.define('Transactions', {
         allowNull: false,
         validate: {min: 1}
     },
+    // gets a userId by association
 });
 
 module.exports = Transactions;

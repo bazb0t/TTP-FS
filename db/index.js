@@ -9,5 +9,6 @@ User.hasMany(Transactions);
 Transactions.belongsTo(User);
 
 User.hasMany(Assets); // will add an attribute UserId to the Assets model! Portfolio = Assets.findAll(where: {userId = grab user id})
+Assets.belongsTo(User);
 
 module.exports = db;
