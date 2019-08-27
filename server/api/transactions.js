@@ -5,8 +5,11 @@ const Transactions = require('../../db/Transactions');
 // matches GET requests to /api/transactions/
 router.get('/:userId', async (req, res, next) => {
   try {
-    if (!req.session.userId) res.sendStatus(404);
-    const transactions = await Transactions.findByUserId(req.session.userId);
+    const transactions = await Transactions.findAll({
+      where: {
+        UserId: req.params.userId
+      }
+    });
     res.send(transactions);
   } catch (err) {
     next(err);

@@ -9,8 +9,8 @@ const Trading = props => {
   const { user, handleSubmit, error } = props;
 
   return (
-    <div>
-      <h4>Cash: ${user.cash}</h4>
+    <div className="Trading__container">
+    <h4>Cash: ${user.cash}</h4>
       <form onSubmit={() => handleSubmit(event, props.user)} name={name}>
         <select name='method'>
           <option selected value='buy'>

@@ -38,6 +38,7 @@ router.post('/:userId', async (req, res, next) => {
     await Assets.create({
       tickerSymbol: req.body.tickerSymbol,
       qty: req.body.qty,
+      totalValue: req.body.totalValue,
       UserId: req.params.userId
     });
     res.send(next)
@@ -51,7 +52,8 @@ router.put('/:userId', async (req, res, next) => {
   try {
     await Assets.update(
       {
-        qty: req.body.qty
+        qty: req.body.qty,
+        totalValue: req.body.totalValue,
       },
       {
         returning: true,

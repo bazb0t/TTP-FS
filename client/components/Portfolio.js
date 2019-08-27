@@ -1,14 +1,14 @@
 import React from 'react';
-// import Assets from "./Assets"
+import Assets from "./Assets"
 import Trading from './Trading';
-const totalValue = 592394.29; // dummy var; will be user's combined assets+cash later
+const totalValue = 592394.29; // placeholder var; will be user's combined assets+cash later
 
 const Portfolio = () => {
   return (
-    <div className='Portfolio'>
+    <div className='Portfolio__container'>
       <h2>Portfolio (${totalValue})</h2>
       <div className='Portfolio__inner'>
-        {/* <Assets />*/}
+        <Assets />
         <Trading />
       </div>
     </div>
