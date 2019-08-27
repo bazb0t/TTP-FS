@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// returns qty of asset in portfolio
 router.get('/:tickerSymbol/', async (req, res, next) => {
   try {
     if (!req.session.userId) res.sendStatus(404);

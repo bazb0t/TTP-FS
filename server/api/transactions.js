@@ -14,17 +14,17 @@ router.get('/:userId', async (req, res, next) => {
 });
 
 // matches POST requests to /api/transactions/
-// axios.post(`/transactions/`, quote, qty, method)
+// axios.post(`/transactions/`, tickerSymbol, price, qty, method)
 router.post('/', function(req, res, next) {
   try {
     Transactions.create({
-      tickerSymbol: req.body.quote.tickerSymbol,
-      price: req.body.quote.latestPrice,
+      tickerSymbol: req.body.tickerSymbol,
+      price: req.body.price,
       qty: req.body.qty,
       method: req.body.method,
-      userId: req.session.userId
+      UserId: req.session.userId
     });
-    res.status(200);
+    res.sendStatus(200);
   } catch (err) {
     console.error(err);
   }
