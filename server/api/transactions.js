@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
       price: req.body.price,
       qty: req.body.qty,
       method: req.body.method,
-      UserId: req.session.userId
+      UserId: req.body.userId
     });
     res.sendStatus(200);
   } catch (err) {

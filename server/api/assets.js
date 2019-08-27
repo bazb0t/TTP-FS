@@ -3,27 +3,29 @@ const router = require('express').Router();
 const Assets = require('../../db/Assets');
 
 // matches GET requests to /api/assets/
-router.get('/', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
-    if (!req.session.userId) res.sendStatus(404);
-    const portfolio = await Assets.findByUserId(req.session.userId);
+    const portfolio = await Assets.findAll({
+      where: {
+        UserId: req.params.userId
+      }
+    });
     res.send(portfolio);
   } catch (err) {
     next(err);
   }
 });
 
-// returns qty of asset in portfolio
-router.get('/:tickerSymbol/', async (req, res, next) => {
+// returns asset in portfolio
+router.get('/:userId/:tickerSymbol/', async (req, res, next) => {
   try {
-    if (!req.session.userId) res.sendStatus(404);
     const asset = await Assets.findOne({
       where: {
-        userId: req.session.userId,
+        UserId: req.params.userId,
         tickerSymbol: req.params.tickerSymbol
       }
     });
-    res.send(asset.qty);
+    res.send(asset);
   } catch (err) {
     next(err);
   }
@@ -31,37 +33,35 @@ router.get('/:tickerSymbol/', async (req, res, next) => {
 
 // matches POST requests to /api/assets/
 // axios.post(`/assets/`, quote, qty)
-router.post('/', async (req, res, next) => {
+router.post('/:userId', async (req, res, next) => {
   try {
-    if (!req.session.userId) res.sendStatus(404);
     await Assets.create({
-      tickerSymbol: req.body.quote.tickerSymbol,
+      tickerSymbol: req.body.tickerSymbol,
       qty: req.body.qty,
-      userId: req.session.userId
+      UserId: req.params.userId
     });
-    res.status(200);
+    res.send(next)
   } catch (err) {
     console.error(err);
   }
 });
 
 // matches PUT requests to /api/assets/
-// axios.post(`/assets/`, {quote, newQty}) -- calc newQty by axios.geting the existing quantity
-router.put('/', async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
-    if (!req.session.userId) res.sendStatus(404);
     await Assets.update(
       {
-        qty: req.body.newQty
+        qty: req.body.qty
       },
       {
         returning: true,
         where: {
-          userId: req.session.userId,
-          tickerSymbol: req.body.quote.tickerSymbol
+          UserId: req.params.userId,
+          tickerSymbol: req.body.tickerSymbol
         }
       }
     );
+    res.sendStatus(200);
   } catch (err) {
     console.error(err);
   }
