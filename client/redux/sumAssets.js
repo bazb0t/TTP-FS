@@ -9,33 +9,33 @@ const SUMMED_ASSETS = 'SUMMED_ASSETS';
  * INITIAL STATE
  */
 
-const sumValue = 0;
+const sumAssets = 0;
 
 /**
  * ACTION CREATORS
  */
-const summedAssets = sumValue => ({ type: SUMMED_ASSETS, sumValue });
+const summedAssets = summedValue => ({ type: SUMMED_ASSETS, summedValue });
 
 /**
  * THUNK CREATORS
  */
 
-export const sumValueTotals = assets => async dispatch => {
+export const sumUpTotals = assets => dispatch => {
   try {
-    let sumValue = 0;
-    for (let asset = 0; asset < assets.length; asset++) {
-      sumValue = Number(sumValue) + Number(assets[asset].totalValue);
-      return dispatch(summedAssets(sumValue));
+    let summedValue = 0;
+    for (let asset in assets) {
+      summedValue = Number(summedValue) + Number(assets[asset].totalValue);
     }
+    return dispatch(summedAssets(summedValue));
   } catch (err) {
     console.error(err);
   }
 };
 
-export const sumAssets = id => async dispatch => {
+export const getSumAssets = id => async dispatch => {
   try {
     const { data } = await axios.get(`/api/assets/${id}`);
-    return dispatch(sumValueTotals(data));
+    return dispatch(sumUpTotals(data));
   } catch (err) {
     console.error(err);
   }
@@ -44,10 +44,10 @@ export const sumAssets = id => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = sumValue, action) {
+export default function(state = sumAssets, action) {
   switch (action.type) {
     case SUMMED_ASSETS:
-      return action.sumValue;
+      return action.summedValue;
     default:
       return state;
   }
