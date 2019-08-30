@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.nav--logged-in {
+    margin-left: 70%;
+    margin-right: 10px;
+    float: right;
+}
+
+.Transactions__container {
+    margin-top: 20px;
+    padding: 20px;
+    display: block;
+    justify-content: center;
+}
+
+.transaction__row-container {
+    max-width: 50%;
+    padding: 10px;
+}
+
+.Portfolio__container {
+    max-width: 80%;
+    margin-top: 20px;
+    padding: 20px;
+    justify-self: center;
+    display: block;
+    align-items: center;
+}
+
+.Assets__container {
+    min-width: 60%;
+    float: left;
+    margin-left: 40px;
+}
+
+.Trading__container {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding-left: 20px;
+    margin: 20px;
+    max-width: 20%;
+    float: right;
+    border-left: 1px solid black;
+}
+
+.asset__row-container {
+    padding: 10px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.asset--left-info {
+    min-width: 90%;
+    align-self: left;
+}
+
+.asset--right-info {
+    max-width: 10%;
+    align-self: right;
+}

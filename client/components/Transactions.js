@@ -1,16 +1,55 @@
-import React from 'react';
 
-const Transactions = () => {
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getTransactions } from '../redux/store';
+import OneTransaction from './OneTransaction';
+
+// const Transactions = props => {
+export class Transactions extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      transactions: this.props.transactions,
+      user: this.props.user
+    };
+  }
+
+  componentDidMount() {
+    const id = this.state.user.id;
+    this.props.getTransactions(id);
+  }
+
+  render() {
+    const transactions = this.props.transactions;
     return (
-        <div className="Transactions">
-            <h2>Transactions</h2>
-            <div className="Transactions">
-                ooga
-                {/* <Assets />
-                <Trading /> */}
-            </div>
-        </div>
-    )
+      <div className="Transactions__container">
+          <h2>Transactions</h2>
+        {transactions.map(transaction => {
+          return <OneTransaction key={transaction.tickerSymbol} transaction={transaction} />;
+        })}
+      </div>
+    );
+  }
 }
 
-export default Transactions;
+/**
+ * CONTAINER
+ */
+
+const mapState = state => {
+  return {
+    transactions: state.transactions,
+    user: state.user
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getTransactions: id => dispatch(getTransactions(id))
+  };
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Transactions);

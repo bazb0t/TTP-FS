@@ -25,7 +25,7 @@ const Users = db.define('Users', {
     }
   },
   cash: {
-    type: Sequelize.DECIMAL(Infinity, 2),
+    type: Sequelize.DECIMAL(1000, 2),
     defaultValue: 9000.00,
   }
 })

@@ -1,10 +1,14 @@
 // const Sequelize = require('sequelize');
 const db = require('./db');
-const Users = require('./Users');
+const User = require('./Users');
 const Transactions = require('./Transactions');
+const Assets = require('./Assets');
 
 // Associations
-Users.hasMany(Transactions);
-Transactions.belongsTo(Users);
+User.hasMany(Transactions);
+Transactions.belongsTo(User);
+
+User.hasMany(Assets); // will add an attribute UserId to the Assets model! Portfolio = Assets.findAll(where: {userId = grab user id})
+Assets.belongsTo(User);
 
 module.exports = db;
