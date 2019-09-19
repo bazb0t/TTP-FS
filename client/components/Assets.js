@@ -18,8 +18,7 @@ export class Assets extends Component {
   }
 
   render() {
-    const assets = this.props.assets;
-
+    const assets = this.props.assets['assets'];
     return (
       <div className='Assets__container'>
         {assets.map(asset => {
