@@ -22,7 +22,7 @@ export class Portfolio extends Component {
 
     return (
       <div className='Portfolio__container'>
-        <h2>Portfolio ({porttotal})</h2>
+        <h3>Portfolio ({porttotal})</h3>
         <div className='Portfolio__inner'>
           <Assets />
           <Trading />

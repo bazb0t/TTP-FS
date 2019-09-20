@@ -9,34 +9,40 @@ const Trading = props => {
   const { user, handleSubmit, error } = props;
 
   return (
-    <div className="Trading__container">
-    <h4>Cash: ${user.cash}</h4>
-      <form onSubmit={() => handleSubmit(event, props.user)} name={name}>
-        <select name='method'>
-          <option selected value='buy'>
-            BUY
-          </option>
-          <option value='sell'>SELL</option>
-        </select>
-        <div>
-          <label htmlFor='tickerSymbol'>
-            <small>Symbol</small>
-          </label>
-          <input name='tickerSymbol' type='text' />
-  {/* put latest price here: latestPrice ? `price: ${latestPrice}` : <></> */}
-        </div>
-        <div>
-          <label htmlFor='qty'>
-            <small>Quantity</small>
-          </label>
-          <input name='qty' type='number' />
-            {/* put subtotal here: latestPrice ? `total: ${latestPrice * qty}` : <></> */}
-        </div>
-        <div>
-          <button type='submit'>TRADE</button>
-        </div>
-        {error && error.response && <div> {error.response.data}</div>}
-      </form>
+    <div className='Trading__container'>
+      <h4>Cash: ${user.cash}</h4>
+      <div className='tradeForm'>
+        <form onSubmit={() => handleSubmit(event, props.user)} name={name}>
+          <select name='method'             className="tradeForm">
+            <option selected value='buy'>
+              BUY
+            </option>
+            <option value='sell'>
+              SELL
+            </option>
+          </select>
+          <div>
+            <input name='tickerSymbol'
+            type='text'
+            placeholder='SYMBOL'
+            className="tradeForm"
+            />
+          </div>
+          <div>
+            <input name='qty'
+            type='number'
+            placeholder='QUANTITY'
+            className="tradeForm"
+            />
+          </div>
+          <div>
+            <button type='submit' className="tradeForm">
+              TRADE
+            </button>
+          </div>
+          {error && error.response && <div> {error.response.data}</div>}
+        </form>
+      </div>
     </div>
   );
 };

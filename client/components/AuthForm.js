@@ -9,43 +9,59 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error, isLoggedIn } = props;
 
   return (
-    <div>
+    <div className='authContainer'>
       {isLoggedIn ? (
         <Redirect to='/' />
       ) : (
         <div>
-          <h2>{displayName}</h2>
-          <form onSubmit={handleSubmit} name={name}>
-            {displayName === 'Register' ? (
+          <h3>{displayName}</h3>
+          <div className='authForm'>
+            <form onSubmit={handleSubmit} name={name}>
+              {displayName === 'REGISTER' ? (
+                <div>
+                  <input
+                    name='userName'
+                    type='text'
+                    placeholder='NAME'
+                    className='authForm'
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
               <div>
-                <label htmlFor='userName'>
-                  <small>Name</small>
-                </label>
-                <input name='userName' type='text' />
+                <input
+                  name='email'
+                  type='text'
+                  placeholder='EMAIL'
+                  className='authForm'
+                />
               </div>
-            ) : (
-              <></>
-            )}
-            <div>
-              <label htmlFor='email'>
-                <small>Email</small>
-              </label>
-              <input name='email' type='text' />
-            </div>
-            <div>
-              <label htmlFor='password'>
-                <small>Password</small>
-              </label>
-              <input name='password' type='password' />
-            </div>
-            <div>
-              <button type='submit'>{displayName}</button>
-            </div>
-            {error && error.response && <div> {error.response.data}</div>}
-          </form>
-          <Link to={name === 'signup' ? `/login` : `/signup`}>
-            {displayName === 'Register' ? 'Sign In' : 'Register'}
-          </Link>
+              <div>
+                <input
+                  name='password'
+                  type='password'
+                  placeholder='PASSWORD'
+                  className='authForm'
+                />
+              </div>
+              <div>
+                <button type='submit' className='authForm'>
+                  {displayName}
+                </button>
+              </div>
+              {error && error.response && <div> {error.response.data}</div>}
+            </form>
+            <h6>
+              <Link to={name === 'signup' ? `/login` : `/signup`}>
+                <em>
+                  {displayName === 'REGISTER'
+                    ? 'Registered? SIGN IN'
+                    : 'No account? REGISTER'}
+                </em>
+              </Link>
+            </h6>
+          </div>
         </div>
       )}
     </div>
@@ -57,7 +73,7 @@ const mapLogin = state => {
   return {
     isLoggedIn: !!state.user.id,
     name: 'login',
-    displayName: 'Sign In',
+    displayName: 'SIGN IN',
     error: state.user.error
   };
 };
@@ -66,7 +82,7 @@ const mapSignup = state => {
   return {
     isLoggedIn: !!state.user.id,
     name: 'signup',
-    displayName: 'Register',
+    displayName: 'REGISTER',
     error: state.user.error
   };
 };

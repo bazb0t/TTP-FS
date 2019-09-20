@@ -16,8 +16,10 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Pre Login */}
+        <div className="authParent">
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        </div>
         {isLoggedIn && (
           <Switch>
             {/* Post Login */}

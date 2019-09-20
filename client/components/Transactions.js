@@ -23,7 +23,7 @@ export class Transactions extends Component {
     const transactions = this.props.transactions;
     return (
       <div className="Transactions__container">
-          <h2>Transactions</h2>
+          <h3>Transactions</h3>
         {transactions.map(transaction => {
           return <OneTransaction key={transaction.tickerSymbol} transaction={transaction} />;
         })}

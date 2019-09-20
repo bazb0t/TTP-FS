@@ -1,71 +1,136 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+input {
+  text-align: center;
+}
+
+.nav--logged-out {
+  text-align: center;
+  align-self: center;
+  margin: 10px;
+}
 
 .nav--logged-in {
-    margin-left: 70%;
-    margin-right: 10px;
-    float: right;
+  text-align: right;
+  align-self: right;
+  margin-right: 10px;
+}
+
+.authContainer {
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border: 2px dashed black;
+  padding: 10px;
+  margin: 20px;
+  width: 200px;
+  text-align: center;
+}
+
+.authParent {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.authForm {
+  display: inline-block;
+  width: 100%;
+}
+
+.tradeForm {
+  display: inline-block;
+  width: 100%;
 }
 
 .Transactions__container {
-    margin-top: 20px;
-    padding: 20px;
-    display: block;
-    justify-content: center;
+  margin-top: 10px;
+  padding: 20px;
+  display: block;
+  justify-content: center;
 }
 
 .transaction__row-container {
-    max-width: 50%;
-    padding: 10px;
+  max-width: 50%;
+  padding: 10px;
 }
 
 .Portfolio__container {
-    max-width: 80%;
-    margin-top: 20px;
-    padding: 20px;
-    justify-self: center;
-    display: block;
-    align-items: center;
+  white-space: nowrap;
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 20px;
+  justify-self: center;
+}
+
+.Portfolio__inner {
+  display: flex;
+  justify-content: space-between;
 }
 
 .Assets__container {
-    min-width: 60%;
-    float: left;
-    margin-left: 40px;
+  flex-grow: 1;
+  max-width: 80%;
+  padding-right: 20px;
+  border-right: 1px solid black;
 }
 
 .Trading__container {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    padding-left: 20px;
-    margin: 20px;
-    max-width: 20%;
-    float: right;
-    border-left: 1px solid black;
+  white-space: nowrap;
+  padding-left: 20px;
+  min-width: 20%;
 }
 
 .asset__row-container {
-    padding: 10px;
-    max-width: 100%;
-    display: flex;
-    flex-wrap: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid black;
+  padding: 10px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
 }
 
 .asset--left-info {
-    min-width: 85%;
-    text-align: left;
+  max-width: 85%;
+  min-width: 65%;
+  text-align: left;
 }
 
 .asset--right-info {
-    max-width: 15%;
-    text-align: right;
+  min-width: 15%;
+  max-width: 25%;
+  text-align: right;
 }
