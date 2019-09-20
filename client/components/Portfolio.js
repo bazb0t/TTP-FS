@@ -22,9 +22,9 @@ export class Portfolio extends Component {
     porttotal = porttotal.concat(truncAssets);
 
     return (
-      <div className='Portfolio__container'>
+      <div className="Portfolio__container">
         <h3>Portfolio ({porttotal})</h3>
-        <div className='Portfolio__inner'>
+        <div className="Portfolio__inner">
           <Assets />
           <Trading />
         </div>

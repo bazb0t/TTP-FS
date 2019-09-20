@@ -9,21 +9,21 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error, isLoggedIn } = props;
 
   return (
-    <div className='authParent'>
+    <div className="authParent">
       {isLoggedIn ? (
-        <Redirect to='/' />
+        <Redirect to="/" />
       ) : (
         <div className="authContainer">
           <h3>{displayName}</h3>
-          <div className='authForm'>
+          <div className="authForm">
             <form onSubmit={handleSubmit} name={name}>
               {displayName === 'REGISTER' ? (
                 <div>
                   <input
-                    name='userName'
-                    type='text'
-                    placeholder='NAME'
-                    className='authForm'
+                    name="userName"
+                    type="text"
+                    placeholder="NAME"
+                    className="authForm"
                     autoComplete="name"
                   />
                 </div>
@@ -32,26 +32,26 @@ const AuthForm = props => {
               )}
               <div>
                 <input
-                  name='email'
-                  type='text'
-                  placeholder='EMAIL'
-                  className='authForm'
+                  name="email"
+                  type="text"
+                  placeholder="EMAIL"
+                  className="authForm"
                   required
                   autoComplete="email"
                 />
               </div>
               <div>
                 <input
-                  name='password'
-                  type='password'
-                  placeholder='PASSWORD'
-                  className='authForm'
+                  name="password"
+                  type="password"
+                  placeholder="PASSWORD"
+                  className="authForm"
                   required
                   autoComplete="password"
                 />
               </div>
               <div>
-                <button type='submit' className='authForm'>
+                <button type="submit" className="authForm">
                   {displayName}
                 </button>
               </div>

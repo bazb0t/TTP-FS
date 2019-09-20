@@ -4,7 +4,8 @@ import {BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import '../public/index.css';
-import regeneratorRuntime from "regenerator-runtime";
+// eslint-disable-next-line no-unused-vars
+import regeneratorRuntime from 'regenerator-runtime';
 import history from './history'
 import App from './App'; // app wrapper
 
