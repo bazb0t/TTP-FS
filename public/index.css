@@ -6,28 +6,35 @@
 
 html,
 body {
+  background-color: beige;
   font-family: Verdana, sans-serif;
   font-size: 15px;
   line-height: 1.5;
 }
 
 h1 {
-  font-size: 36px;
+  color: #811313;
+  font-size: 40px;
+  font-variant: small-caps;
 }
 
 h2 {
+  color: #5f0606;
   font-size: 30px;
 }
 
 h3 {
+  color: #6d4406;
   font-size: 24px;
 }
 
 h4 {
+  color: #6d4406;
   font-size: 18px;
 }
 
 h6 {
+  color: #6d4406;
   font-size: 12px;
 }
 
@@ -35,24 +42,40 @@ input {
   text-align: center;
 }
 
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #503b00;
+  text-decoration: none;
+}
+
+a:hover {
+  border: 1px dashed #503b00;
+}
+
 .nav--logged-out {
   text-align: center;
   align-self: center;
   margin: 10px;
+  padding: 4px;
 }
 
 .nav--logged-in {
   text-align: right;
   align-self: right;
   margin-right: 10px;
+  padding: 4px;
 }
 
 .authContainer {
+  background-color: #d2f0d2;
+  display: flex;
   align-self: center;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  border: 2px dashed black;
+  border: 2px dashed #b6dfb6;
   padding: 10px;
   margin: 20px;
   width: 200px;
@@ -66,11 +89,6 @@ input {
 }
 
 .authForm {
-  display: inline-block;
-  width: 100%;
-}
-
-.tradeForm {
   display: inline-block;
   width: 100%;
 }
@@ -108,9 +126,16 @@ input {
 }
 
 .Trading__container {
+  display: flex;
+  flex-direction: column;
   white-space: nowrap;
   padding-left: 20px;
   min-width: 20%;
+}
+
+.tradeForm {
+  display: inline-block;
+  width: 100%;
 }
 
 .asset__row-container {

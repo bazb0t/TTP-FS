@@ -13,30 +13,32 @@ const Trading = props => {
       <h4>Cash: ${user.cash}</h4>
       <div className='tradeForm'>
         <form onSubmit={() => handleSubmit(event, props.user)} name={name}>
-          <select name='method'             className="tradeForm">
+          <select name='method' className='tradeForm'>
             <option selected value='buy'>
               BUY
             </option>
-            <option value='sell'>
-              SELL
-            </option>
+            <option value='sell'>SELL</option>
           </select>
           <div>
-            <input name='tickerSymbol'
-            type='text'
-            placeholder='SYMBOL'
-            className="tradeForm"
+            <input
+              name='tickerSymbol'
+              type='text'
+              placeholder='SYMBOL'
+              className='tradeForm'
+              required
             />
           </div>
           <div>
-            <input name='qty'
-            type='number'
-            placeholder='QUANTITY'
-            className="tradeForm"
+            <input
+              name='qty'
+              type='number'
+              placeholder='QUANTITY'
+              className='tradeForm'
+              required
             />
           </div>
           <div>
-            <button type='submit' className="tradeForm">
+            <button type='submit' className='tradeForm'>
               TRADE
             </button>
           </div>

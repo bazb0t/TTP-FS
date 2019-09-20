@@ -9,11 +9,11 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error, isLoggedIn } = props;
 
   return (
-    <div className='authContainer'>
+    <div className='authParent'>
       {isLoggedIn ? (
         <Redirect to='/' />
       ) : (
-        <div>
+        <div className="authContainer">
           <h3>{displayName}</h3>
           <div className='authForm'>
             <form onSubmit={handleSubmit} name={name}>
@@ -35,6 +35,7 @@ const AuthForm = props => {
                   type='text'
                   placeholder='EMAIL'
                   className='authForm'
+                  required
                 />
               </div>
               <div>
@@ -43,6 +44,7 @@ const AuthForm = props => {
                   type='password'
                   placeholder='PASSWORD'
                   className='authForm'
+                  required
                 />
               </div>
               <div>
