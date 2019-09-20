@@ -61,11 +61,11 @@
 }
 
 .asset--left-info {
-    min-width: 90%;
-    align-self: left;
+    min-width: 85%;
+    text-align: left;
 }
 
 .asset--right-info {
-    max-width: 10%;
-    align-self: right;
+    max-width: 15%;
+    text-align: right;
 }

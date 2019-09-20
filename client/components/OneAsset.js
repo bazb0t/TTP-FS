@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getChange } from '../redux/store';
+import { publicIEXtoken } from '../redux/store';
+import axios from 'axios';
 
 export class OneAsset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      asset: this.props.asset
+      asset: this.props.asset,
+      change: 0
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
     const tickerSymbol = this.props.asset.tickerSymbol;
-    this.props.getChange(tickerSymbol);
+    let stockChange = await axios.get(
+      `https://cloud.iexapis.com/stable/stock/${tickerSymbol}/quote/change?token=${publicIEXtoken}`
+    );
+    this.setState({
+      change: stockChange.data
+    });
   }
   render() {
     let asset = this.state.asset;
-    let stockChange = this.props.change;
+    let stockChange = this.state.change;
     let newColor = '';
     if (stockChange > 0) {
       newColor = '#008000';
@@ -31,10 +37,7 @@ export class OneAsset extends Component {
             <div className='asset--left-info'>
               {asset.tickerSymbol} - {asset.qty} Shares
             </div>
-            <div className='asset--right-info'>
-              {asset.totalValue}
-            </div>
-            <hr />
+            <div className='asset--right-info'>{asset.totalValue}</div>
           </div>
         ) : (
           <></>
@@ -44,23 +47,4 @@ export class OneAsset extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
-
-const mapState = state => {
-  return {
-    change: state.assets.change
-  };
-};
-
-const mapDispatch = dispatch => {
-  return {
-    getChange: id => dispatch(getChange(id))
-  };
-};
-
-export default connect(
-  mapState,
-  mapDispatch
-)(OneAsset);
+export default OneAsset;

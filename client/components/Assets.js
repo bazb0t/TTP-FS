@@ -8,7 +8,7 @@ export class Assets extends Component {
     super(props);
     this.state = {
       assets: this.props.assets,
-      user: this.props.user,
+      user: this.props.user
     };
   }
 
