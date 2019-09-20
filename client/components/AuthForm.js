@@ -24,6 +24,7 @@ const AuthForm = props => {
                     type='text'
                     placeholder='NAME'
                     className='authForm'
+                    autoComplete="name"
                   />
                 </div>
               ) : (
@@ -36,6 +37,7 @@ const AuthForm = props => {
                   placeholder='EMAIL'
                   className='authForm'
                   required
+                  autoComplete="email"
                 />
               </div>
               <div>
@@ -45,6 +47,7 @@ const AuthForm = props => {
                   placeholder='PASSWORD'
                   className='authForm'
                   required
+                  autoComplete="password"
                 />
               </div>
               <div>

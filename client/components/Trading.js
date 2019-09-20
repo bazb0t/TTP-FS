@@ -14,9 +14,7 @@ const Trading = props => {
       <div className='tradeForm'>
         <form onSubmit={() => handleSubmit(event, props.user)} name={name}>
           <select name='method' className='tradeForm'>
-            <option selected value='buy'>
-              BUY
-            </option>
+            <option value='buy'>BUY</option>
             <option value='sell'>SELL</option>
           </select>
           <div>
