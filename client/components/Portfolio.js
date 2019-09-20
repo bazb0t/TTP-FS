@@ -18,7 +18,8 @@ export class Portfolio extends Component {
   }
   render() {
     let porttotal = '$';
-    porttotal = porttotal.concat(this.props.sumAssets);
+    let truncAssets = this.props.sumAssets.toFixed(2);
+    porttotal = porttotal.concat(truncAssets);
 
     return (
       <div className='Portfolio__container'>
